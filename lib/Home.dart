@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ud_flutter_complexapp/Pages/FirstPage.dart';
 import 'package:ud_flutter_complexapp/Pages/SecondPage.dart';
 import 'package:ud_flutter_complexapp/Pages/ThirdPage.dart';
@@ -21,9 +20,9 @@ class _HomeState extends State<Home> {
           title: Text("Complex App"),
           backgroundColor: Color(0xFFFFA200),
         ),
-        backgroundColor: Color(0xFF4A4A4A),
         body: pageOptions[_indexPage],
         bottomNavigationBar: CurvedNavigationBar(
+          height: 52.0,
           items: <Widget>[
             Icon(
               Icons.poll,
@@ -49,7 +48,7 @@ class _HomeState extends State<Home> {
           color: Colors.white,
           backgroundColor: Color(0xFF4A4A4A),
           animationCurve: Curves.easeInOut,
-          animationDuration: Duration(milliseconds: 600),
+          animationDuration: Duration(milliseconds: 300),
           index: 1,
           buttonBackgroundColor: Colors.white,
         ));
