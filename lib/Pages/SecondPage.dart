@@ -41,12 +41,12 @@ class _SecondPageState extends State<SecondPage> {
                   var ourData = snapshot.data[index];
                   return Container(
                     margin: EdgeInsets.all(8.0),
-                    height: 350.0,
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0)),
                       elevation: 8.0,
                       child: Column(
+                        mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
                           Container(
                             padding: EdgeInsets.all(8.0),
@@ -81,12 +81,15 @@ class _SecondPageState extends State<SecondPage> {
                                     )
                                   ],
                                 ),
-                                Container(
-                                  child: Icon(
-                                    Icons.more_vert,
-                                    size: 32.0,
-                                    color: Colors.grey,
+                                GestureDetector(
+                                  child: Container(
+                                    child: Icon(
+                                      Icons.more_vert,
+                                      size: 32.0,
+                                      color: Colors.grey,
+                                    ),
                                   ),
+                                  onTap: () {},
                                 )
                               ],
                             ),
@@ -97,6 +100,109 @@ class _SecondPageState extends State<SecondPage> {
                             child: Image.network(
                               ourData.data["image"],
                               fit: BoxFit.cover,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(8.0),
+                            child: Text(
+                              ourData.data["des"],
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey),
+                              maxLines: 3,
+                            ),
+                          ),
+                          Container(
+                            child: Divider(
+                              height: 1.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 8.0, vertical: 10.0),
+                            child: Row(
+                              children: <Widget>[
+                                Flexible(
+                                  flex: 1,
+                                  child: Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.directions_car,
+                                          color: Colors.lightBlue,
+                                        ),
+                                        SizedBox(
+                                          width: 4.0,
+                                        ),
+                                        Text(
+                                          ourData.data["distance"].toString() +
+                                              " KM",
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  flex: 1,
+                                  child: Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.star,
+                                          color: Color(0xFFFFA534),
+                                        ),
+                                        SizedBox(
+                                          width: 4.0,
+                                        ),
+                                        Text(
+                                          ourData.data["rating"].toString(),
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  flex: 1,
+                                  child: Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.favorite,
+                                          color: Colors.red,
+                                        ),
+                                        SizedBox(
+                                          width: 4.0,
+                                        ),
+                                        Text(
+                                          ourData.data["favorite"].toString() +
+                                              " K",
+                                          style: TextStyle(
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.grey),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           )
                         ],
