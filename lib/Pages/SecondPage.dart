@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -8,6 +10,10 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
+  final _randomColor = new Random();
+
+  MaterialColor color;
+
   Future getHomePost() async {
     var fs = Firestore.instance;
     QuerySnapshot snap = await fs.collection("HomeData").getDocuments();
@@ -20,6 +26,16 @@ class _SecondPageState extends State<SecondPage> {
       getHomePost();
     });
   }
+
+  List<MaterialColor> _colorItem = [
+    Colors.amber,
+    Colors.green,
+    Colors.pink,
+    Colors.grey,
+    Colors.purple,
+    Colors.deepPurple,
+    Colors.deepOrange
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +55,7 @@ class _SecondPageState extends State<SecondPage> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
                   var ourData = snapshot.data[index];
+                  color = _colorItem[_randomColor.nextInt(_colorItem.length)];
                   return Container(
                     margin: EdgeInsets.all(8.0),
                     child: Card(
@@ -64,7 +81,7 @@ class _SecondPageState extends State<SecondPage> {
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        backgroundColor: Color(0xFFFFA200),
+                                        backgroundColor: color,
                                       ),
                                     ),
                                     SizedBox(
