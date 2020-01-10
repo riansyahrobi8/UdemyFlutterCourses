@@ -1,8 +1,9 @@
 import 'dart:math';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:ud_flutter_complexapp/Utils/FirestoreConnection.dart';
 
 class SecondPage extends StatefulWidget {
   @override
@@ -10,22 +11,9 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
-  final _randomColor = new Random();
-
   MaterialColor color;
 
-  Future getHomePost() async {
-    var fs = Firestore.instance;
-    QuerySnapshot snap = await fs.collection("HomeData").getDocuments();
-    return snap.documents;
-  }
-
-  Future<Null> getRegresh() async {
-    await Future.delayed(Duration(seconds: 3));
-    setState(() {
-      getHomePost();
-    });
-  }
+  final _randomColor = new Random();
 
   List<MaterialColor> _colorItem = [
     Colors.amber,
@@ -36,6 +24,13 @@ class _SecondPageState extends State<SecondPage> {
     Colors.deepPurple,
     Colors.deepOrange
   ];
+
+  Future<Null> getRegresh() async {
+    await Future.delayed(Duration(seconds: 3));
+    setState(() {
+      getHomePost();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +70,7 @@ class _SecondPageState extends State<SecondPage> {
                                     Container(
                                       child: CircleAvatar(
                                         child: Text(
-                                          ourData.data["title"][0],
+                                          ourData.data['title'][0],
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               color: Colors.white,
@@ -89,7 +84,7 @@ class _SecondPageState extends State<SecondPage> {
                                     ),
                                     Container(
                                       child: Text(
-                                        ourData.data["title"],
+                                        ourData.data['title'],
                                         style: TextStyle(
                                             fontSize: 20.0,
                                             fontWeight: FontWeight.bold,
@@ -115,14 +110,14 @@ class _SecondPageState extends State<SecondPage> {
                             width: MediaQuery.of(context).size.width,
                             height: 200.0,
                             child: Image.network(
-                              ourData.data["image"],
+                              ourData.data['image'],
                               fit: BoxFit.cover,
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.all(8.0),
                             child: Text(
-                              ourData.data["des"],
+                              ourData.data['des'],
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontSize: 16.0,
@@ -157,8 +152,7 @@ class _SecondPageState extends State<SecondPage> {
                                           width: 4.0,
                                         ),
                                         Text(
-                                          ourData.data["distance"].toString() +
-                                              " KM",
+                                          "${ourData.data['distance'].toString()} KM",
                                           style: TextStyle(
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
@@ -183,7 +177,7 @@ class _SecondPageState extends State<SecondPage> {
                                           width: 4.0,
                                         ),
                                         Text(
-                                          ourData.data["rating"].toString(),
+                                          ourData.data['rating'].toString(),
                                           style: TextStyle(
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
@@ -208,8 +202,7 @@ class _SecondPageState extends State<SecondPage> {
                                           width: 4.0,
                                         ),
                                         Text(
-                                          ourData.data["favorite"].toString() +
-                                              " K",
+                                          "${ourData.data['favorite'].toString()} K",
                                           style: TextStyle(
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
