@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:ud_flutter_complexapp/Pages/FirstPage.dart';
-import 'package:ud_flutter_complexapp/Pages/SecondPage.dart';
-import 'package:ud_flutter_complexapp/Pages/ThirdPage.dart';
+import 'package:ud_flutter_complexapp/screens/FirstScreen.dart';
+import 'package:ud_flutter_complexapp/screens/SecondScreen.dart';
+import 'package:ud_flutter_complexapp/screens/ThirdScreen.dart';
 
-class Home extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   int _indexPage = 1;
 
-  final pageOptions = [FirstPage(), SecondPage(), ThirdPage()];
+  final pageOptions = [FirstScreen(), SecondScreen(), ThirdScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

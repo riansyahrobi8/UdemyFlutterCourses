@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:ud_flutter_complexapp/Utils/FirestoreConnection.dart';
+import 'package:ud_flutter_complexapp/helper/FirestoreConnection.dart';
 
-class SecondPage extends StatefulWidget {
+class SecondScreen extends StatefulWidget {
   @override
-  _SecondPageState createState() => _SecondPageState();
+  _SecondScreenState createState() => _SecondScreenState();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _SecondScreenState extends State<SecondScreen> {
   MaterialColor color;
 
   final _randomColor = new Random();
